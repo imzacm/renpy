@@ -3,25 +3,21 @@
 {
     "name": "Python 3",
     // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-    // "image": "mcr.microsoft.com/devcontainers/python:0-3.11-bullseye",
+    "image": "mcr.microsoft.com/devcontainers/python:0-3.11-bullseye",
 
     // Features to add to the dev container. More info: https://containers.dev/features.
-    // "features": {
-    //   "ghcr.io/devcontainers-contrib/features/coverage-py:2": {},
-    //   "ghcr.io/devcontainers-contrib/features/apt-get-packages:1": {
-    //     "packages": "python3-dev,libavcodec-dev,libavformat-dev,libswresample-dev,libswscale-dev,libfreetype6-dev,libfribidi-dev,libsdl2-dev,libsdl2-image-dev,libsdl2-gfx-dev,libsdl2-mixer-dev,libsdl2-ttf-dev,libjpeg-dev"
-    //   }
-    // },
-  
-    "build": { "dockerfile": "Dockerfile" },
-
+    "features": {
+      "ghcr.io/devcontainers-contrib/features/coverage-py:2": {},
+      "ghcr.io/devcontainers-contrib/features/apt-get-packages:1": {
+        "packages": "python3-dev,libavcodec-dev,libavformat-dev,libswresample-dev,libswscale-dev,libfreetype6-dev,libfribidi-dev,libsdl2-dev,libsdl2-image-dev,libsdl2-gfx-dev,libsdl2-mixer-dev,libsdl2-ttf-dev,libjpeg-dev"
+      }
+    },
     
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     // "forwardPorts": [],
   
     // Use 'postCreateCommand' to run commands after the container is created.
-    // "postCreateCommand": "pip3 install --user cython future six typing pefile requests ecdsa && git clone git clone --depth 1 https://www.github.com/renpy/pygame_sdl2 && pushd pygame_sdl2 && python setup.py install && python setup.py install_headers && popd && printf 'export RENPY_DEPS_INSTALL=\"/usr:/usr/lib/$(gcc -dumpmachine)/\"\nexport RENPY_CYTHON=cython\n' >> /etc/bash.bashrc"
-    "postCreateCommand": "/usr/src/.devcontainer-scripts/post-create.sh"
+    "postCreateCommand": "chmod +x .devcontainer/scripts/post-create.sh && .devcontainer/scripts/post-create.sh"
   
     // Configure tool-specific properties.
     // "customizations": {},
